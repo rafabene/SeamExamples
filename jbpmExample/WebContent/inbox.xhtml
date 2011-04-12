@@ -1,0 +1,60 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich" template="layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h1>Caixa de entrada de #{identity.credentials.username}</h1>
+
+		<rich:dataTable var="varTask" value="#{pooledTaskInstanceList}">
+			<rich:column>
+				<f:facet name="header">Código</f:facet>
+				#{varTask.id}
+			</rich:column>
+			<rich:column>
+				<f:facet name="header">Data Criação</f:facet>
+				#{varTask.create}
+			</rich:column>
+			<rich:column>
+				<f:facet name="header">Tarefa</f:facet>
+				#{varTask.name}
+			</rich:column>
+			<rich:column>
+				<f:facet name="header">Ação</f:facet>
+				<s:button taskInstance="#{varTask}" value="Associcar Tarefa"
+					action="#{pooledTask.assignToCurrentActor()}" />
+			</rich:column>
+		</rich:dataTable>
+
+		<h1>Tarefas Já associadas a mim</h1>
+		<rich:dataTable var="varTask" value="#{taskInstanceList}">
+			<rich:column>
+				<f:facet name="header">Código</f:facet>
+				#{varTask.id}
+			</rich:column>
+			<rich:column>
+				<f:facet name="header">Data Criação</f:facet>
+				#{varTask.create}
+			</rich:column>
+			<rich:column>
+				<f:facet name="header">Tarefa</f:facet>
+				#{varTask.name}
+			</rich:column>
+			<rich:column>
+				<f:facet name="header">Ação</f:facet>
+				<s:button taskInstance="#{varTask}" value="Começar Aprovar Ticket"
+					rendered="#{varTask.name == 'aprovar' and empty varTask.start}" action="aprovacao" />
+				<s:button taskInstance="#{varTask}" value="Continuar Aprovar Ticket"
+					rendered="#{varTask.name == 'aprovar' and not empty varTask.start}" action="aprovacao-resume" />
+				<s:button value="Comprar" taskInstance="#{varTask}"
+					rendered="#{varTask.name == 'comprar'}"
+					action="#{aprovacaoCompraProcess.comprar()}" />
+			</rich:column>
+		</rich:dataTable>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,17 @@
+#Thu Apr 07 19:33:20 BRT 2011
+action.package=com.redhat.pocreaproveitamento.session
+action.sources=/PocReaproveitamento-ejb/ejbModule
+eclipse.preferences.version=1
+model.package=com.redhat.pocreaproveitamento.entity
+model.sources=/PocReaproveitamento-ejb/ejbModule
+seam.ear.project=PocReaproveitamento-ear
+seam.ejb.project=PocReaproveitamento-ejb
+seam.project.connection.profile=jBPM
+seam.project.deployment.type=ear
+seam.project.settings.version=1.1
+seam.project.web.root.folder=/PocReaproveitamento/WebContent
+seam.runtime.name=seam-2.2.2EAP5
+seam.test.creating=false
+seam.test.project=PocReaproveitamento-test
+test.package=org.domain.pocreaproveitamento.test
+test.sources=/PocReaproveitamento-test/test-src

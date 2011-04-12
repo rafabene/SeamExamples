@@ -1,0 +1,52 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    xmlns:a="http://richfaces.org/a4j"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="aprovarCompraForm">
+
+        <rich:panel>
+            <f:facet name="header">aprovarCompra</f:facet>
+
+            <s:decorate id="SolicitanteField" template="layout/edit.xhtml">
+                <ui:define name="label">Solicitante</ui:define>
+                <h:inputText id="value" required="true"
+                             value="#{aprovacaoCompraProcess.requisitante}" readonly="true"/>
+            </s:decorate>
+
+            <s:decorate id="valueField" template="layout/edit.xhtml">
+                <ui:define name="label">Valor</ui:define>
+                <h:inputText id="value" required="true"
+                             value="#{aprovacaoCompraProcess.tamanhoCompra}" readonly="true"/>
+            </s:decorate>
+
+            <s:decorate id="statusField" template="layout/edit.xhtml">
+                <ui:define name="label">Valor</ui:define>
+                <h:inputText id="value" required="true"
+                             value="#{aprovacaoCompraProcess.status}" readonly="true"/>
+            </s:decorate>
+
+            <div style="clear:both"/>
+
+        </rich:panel>
+
+        <div class="actionButtons">
+        	<h:commandButton value="Aprovar" action="#{aprovarCompraManager.aprovar}" />
+        	<h:commandButton value="Reprovar" action="#{aprovarCompraManager.reprovar}" />
+        	<h:commandButton value="Cancelar" action="#{aprovarCompraManager.cancelar}" />
+        	<h:commandButton value="Não Fazer nada" action="/home.seam" />
+        </div>
+
+    </h:form>
+
+</ui:define>
+
+</ui:composition>

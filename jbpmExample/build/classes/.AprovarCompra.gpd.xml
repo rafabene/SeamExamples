@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="AprovarCompra" width="777" height="445">
+  <node name="Início" x="130" y="33" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="Compra valor alto ?" x="129" y="127" width="132" height="36">
+    <edge>
+      <label x="-16" y="-29"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="processar" x="133" y="276" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="aprovar" x="413" y="184" width="132" height="36">
+    <edge>
+      <label x="-29" y="15"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="94" h1="43" w2="57" h2="-81"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-13" h1="54" w2="-50" h2="-70"/>
+    </edge>
+  </node>
+  <node name="completo" x="133" y="394" width="132" height="36"/>
+  <node name="cancelada" x="416" y="312" width="132" height="36"/>
+  <deployment graphicalInfoFile="/jbpmExample/src/main/.AprovarCompra.gpd.xml" imageFile="/jbpmExample/src/main/AprovarCompra.jpg" serverName="localhost" serverPort="8080" serverDeployer="gpd-deployer/upload">
+    <additionalFiles>
+      <element value="/jbpmExample/src/main/.AprovarCompra.gpd.xml"/>
+      <element value="/jbpmExample/src/main/AprovarCompra.jpg"/>
+    </additionalFiles>
+  </deployment>
+</root-container>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="AprovarCompra">
+
+
+	<start-state name="Início">
+		<transition to="Compra valor alto ?"></transition>
+	</start-state>
+
+
+	<decision name="Compra valor alto ?"  expression="#{tamanhoCompra > 1000}">
+		<transition to="aprovar" name="true"></transition>
+		<transition to="processar" name="false"></transition>
+	</decision>
+
+	<task-node name="processar">
+		<task name="comprar">
+			<description>
+				Comprar Item
+			</description>
+			<assignment pooled-actors="compradores"></assignment>
+		</task>
+		<transition to="completo" name="comprado">
+			<action expression="#{compraService.registrarCompra}"></action>
+		</transition>
+	</task-node>
+
+	<task-node name="aprovar">
+		<task name="aprovar">
+			<description>
+				Revisar Ordem	
+			</description>
+			<assignment pooled-actors="revisores"></assignment>
+		</task>
+		<transition to="processar" name="aprovado"></transition>
+		<transition to="cancelada" name="cancelar"></transition>
+		<transition to="cancelada" name="rejeitar"></transition>
+	</task-node>
+
+
+	<end-state name="completo"></end-state>
+
+	<end-state name="cancelada"></end-state>
+
+
+</process-definition>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="exampleProcess">
+
+
+	<start-state name="start-state">
+		<transition to="task-node"></transition>
+	</start-state>
+
+
+	<task-node name="task-node">
+		<task name="doSomething">
+			<description>
+				Do something as an example of a &quot;Human Task&quot;
+			</description>
+			<assignment pooled-actors="users"></assignment>
+		</task>
+		<transition to="end-state"></transition>
+	</task-node>
+
+
+	<end-state name="end-state"></end-state>
+
+
+</process-definition>

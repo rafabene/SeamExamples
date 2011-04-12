@@ -17,7 +17,7 @@ public interface PersonService {
 
     @GET
     @Path("/")
-    @Produces("application/xml")
+    @Produces("application/json")
     public List<Person> getAllPerson();
     
     @GET

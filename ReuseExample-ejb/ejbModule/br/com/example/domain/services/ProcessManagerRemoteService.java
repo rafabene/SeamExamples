@@ -17,5 +17,7 @@ public interface ProcessManagerRemoteService {
     public void startDoSomethingTask(Long taskId);
 
     public void endDoSomethingTask(Long taskId);
+    
+    public Object getVariable(String variableName, Long taskId);
 
 }

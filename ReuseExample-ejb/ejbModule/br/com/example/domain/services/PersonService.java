@@ -22,7 +22,7 @@ public interface PersonService {
     
     @GET
     @Path("/{personId}")
-    @Produces("application/json")
+    @Produces("application/xml")
     public Person getPersonById(@PathParam("personId") Long id) throws IllegalPersonNumberException;
     
     

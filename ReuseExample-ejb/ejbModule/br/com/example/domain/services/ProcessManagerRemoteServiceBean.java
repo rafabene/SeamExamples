@@ -1,7 +1,6 @@
 package br.com.example.domain.services;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -16,21 +15,19 @@ import org.jbpm.taskmgmt.exe.TaskInstance;
 
 import br.com.example.domain.entity.ExampleWorkflow;
 
-
-
 /**
- *  This EJB is an Example how is possible to have RMI invocation and 
- *  also having JBoss Seam components bijection working.
- *  
- *  Seam Components are injected in this class
- *  
- *  Business Process variables are Outjected to the Process Instance
- *  
- *  
+ * This EJB is an Example how is possible to have RMI invocation and also having JBoss Seam components bijection
+ * working.
+ * 
+ * Seam Components are injected in this class
+ * 
+ * Business Process variables are Outjected to the Process Instance
+ * 
+ * 
  * @author rafael
- *
+ * 
  */
-@Stateless(name="ProcessManagerRemoteService")
+@Stateless(name = "ProcessManagerRemoteService")
 @Name("processManagerRemoteService")
 public class ProcessManagerRemoteServiceBean implements ProcessManagerRemoteService {
 
@@ -51,14 +48,14 @@ public class ProcessManagerRemoteServiceBean implements ProcessManagerRemoteServ
         exampleWorkflow.setIntention(intention);
         exampleWorkflow.setPrice(price);
         exampleWorkflow.setValid(true);
-        return exampleWorkflow.startFlow();
-
+        Long pid = exampleWorkflow.startFlow();
+        return pid;
     }
 
-   @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     public List<org.jbpm.taskmgmt.exe.TaskInstance> getPooledTaskInstanceList(String pooledActors) {
         actor.getGroupActorIds().add(pooledActors);
-        List<String> actors =  new ArrayList<String>();
+        List<String> actors = new ArrayList<String>();
         actors.add(pooledActors);
         return jbpmContext.getGroupTaskList(actors);
     }
@@ -66,9 +63,9 @@ public class ProcessManagerRemoteServiceBean implements ProcessManagerRemoteServ
     public void startDoSomethingTask(Long taskId) {
         TaskInstance task = jbpmContext.getTaskInstance(taskId);
         log.info("Starting task " + task.getName() + " with id=" + task.getId());
-        if (task.getStart() == null){
+        if (task.getStart() == null) {
             task.start();
-        }else{
+        } else {
             task.resume();
         }
     }
@@ -77,5 +74,10 @@ public class ProcessManagerRemoteServiceBean implements ProcessManagerRemoteServ
         TaskInstance task = jbpmContext.getTaskInstance(taskId);
         log.info("Ending task " + task.getName() + " with id=" + task.getId());
         task.end();
+    }
+
+    @Override
+    public Object getVariable(String variableName, Long taskId) {
+        return jbpmContext.getTaskInstance(taskId).getVariable(variableName);
     }
 }

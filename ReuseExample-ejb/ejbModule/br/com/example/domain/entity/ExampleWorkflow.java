@@ -47,9 +47,9 @@ public class ExampleWorkflow {
             throw new IllegalStateException("Intention, Price, Valid or Initiator was not informed");
         }
         status = "STARTED";
-        log.info("Process started");
         BusinessProcess.instance().createProcess("exampleProcess");
         id = ProcessInstance.instance().getId();
+        log.info("Process started");
         return id;
     }
 

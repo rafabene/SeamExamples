@@ -39,10 +39,10 @@
         </rich:panel>
 
         <div class="actionButtons">
-        	<h:commandButton value="Aprovar" action="#{aprovarCompraManager.aprovar}" />
-        	<h:commandButton value="Reprovar" action="#{aprovarCompraManager.reprovar}" />
-        	<h:commandButton value="Cancelar" action="#{aprovarCompraManager.cancelar}" />
-        	<h:commandButton value="Não Fazer nada" action="/home.seam" />
+        	<h:commandButton value="Aprovar" action="#{aprovarCompraManager.aprovar}" rendered="#{aprovacaoCompraProcess.status == 'CRIADA'}"/>
+        	<h:commandButton value="Reprovar" action="#{aprovarCompraManager.reprovar}"  rendered="#{aprovacaoCompraProcess.status == 'CRIADA'}"/>
+        	<h:commandButton value="Cancelar" action="#{aprovarCompraManager.cancelar}"  rendered="#{aprovacaoCompraProcess.status == 'CRIADA'}"/>
+        	<h:commandButton value="Retornar para Principal" action="/home.seam" />
         </div>
 
     </h:form>

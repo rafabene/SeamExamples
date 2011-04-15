@@ -15,3 +15,9 @@ how a Process can be used from Seam (@StarTask) and from EJB (jbpmContext)
 Environment:
 - JBoss SOAP 5.1
 - JBoss Seam 2.2.1.Final
+
+
+jbpmExample is an Example of Workflow with 3 roles: solicitante: revisores
+and compradores
+
+You must deploy AprovarCompra.jpdl.xml process and login to use this example

@@ -1,14 +1,16 @@
-#Wed Apr 06 19:43:37 BRT 2011
+#Fri Apr 15 17:38:16 BRT 2011
 action.package=org.domain.jbpmexample.session
 action.sources=/jbpmExample/src/hot
 eclipse.preferences.version=1
 model.package=org.domain.jbpmexample.entity
 model.sources=/jbpmExample/src/main
+seam.ejb.project=jbpmExample
 seam.project.connection.profile=jBPM
 seam.project.deployment.type=war
 seam.project.settings.version=1.1
 seam.project.web.root.folder=/jbpmExample/WebContent
-seam.runtime.name=seam-2.2.2EAP5
+seam.runtime.name=jboss-seam-2.2.1.Final
+seam.settings.changed.by.user=true
 seam.test.creating=false
 seam.test.project=jbpmExample-test
 test.package=org.domain.jbpmexample.test

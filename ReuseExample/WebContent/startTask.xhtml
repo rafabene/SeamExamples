@@ -1,0 +1,49 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich" template="layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h1>Task #{taskInstance.name}</h1>
+		<h:form>
+			<rich:panel>
+
+				<f:facet name="header">Workflow data</f:facet>
+
+				<s:decorate template="/layout/edit.xhtml">
+					<ui:define name="label">Intention</ui:define>
+					<h:inputText value="#{exampleWorkflow.intention}" readonly="true" />
+				</s:decorate>
+				<s:decorate template="/layout/edit.xhtml">
+					<ui:define name="label">Price</ui:define>
+					<h:inputText value="#{exampleWorkflow.price}" readonly="true" />
+				</s:decorate>
+				<s:decorate template="/layout/edit.xhtml">
+					<ui:define name="label">Valid</ui:define>
+					<h:selectBooleanCheckbox value="#{exampleWorkflow.valid}"
+						disabled="true" readonly="true" />
+				</s:decorate>
+				<s:decorate template="/layout/edit.xhtml">
+					<ui:define name="label">Status</ui:define>
+					<h:inputText value="#{exampleWorkflow.status}" readonly="true" />
+				</s:decorate>
+
+				<div style="clear: both" />
+
+
+			</rich:panel>
+
+			<div class="actionButtons">
+				<h:commandButton value="Done"
+					action="#{processManager.endDoSomeThingTask()}"
+					rendered="#{not empty taskInstance}" />
+				<h:commandButton value="Return to Home" action="home" />
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

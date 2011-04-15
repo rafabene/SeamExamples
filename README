@@ -1,0 +1,17 @@
+ReuseExample is an EAR Seam Project that intents to show how the same
+service (PersonService) can be exposed as:
+* REST (JAX-RS) - JSON and XML Output
+* WebServices (JAX-WS)
+* SEAM Component (@Name)
+* EJB (Local interface)
+
+ReuseExample uses JBoss Seam 2.2.1.Final and must be used with jBPM3 to show
+how a Process can be used from Seam (@StarTask) and from EJB (jbpmContext)
+
+- exampleProcess (inside EJB) must be deployed first
+- remember to adjust Hibernate Dialect at persistence.xml and hibernate.cfg.xml
+- jbpm-jpdl (inside EAR) must be exchanged based on jbpm version
+
+Environment:
+- JBoss SOAP 5.1
+- JBoss Seam 2.2.1.Final
